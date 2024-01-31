@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html th:replace="~{layouts/main :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="container">
+
+    <div class="row" style="margin-top: 60px;">
+        <div class="col-md-12">
+
+            <table border="0">
+                <thead><tr><th></th></tr></thead>
+                <tbody>
+                <tr th:each="book : ${bookList}">
+                    <td>
+                        <div th:if="${book != null}">
+                            <div class="row" style="margin-bottom: 50px;">
+                                <div class="col-md-3">
+                                    <a th:href="@{/bookDetail?id=}+${book.id}"><img class="img-fluid" th:src="@{/images/book/}+${book.id}+'.png'"/></a>
+                                   </div>
+                                <div class="col-md-9">
+                                    <a th:href="@{/bookDetail?id=}+${book.id}"><h4 th:text="${book.name}"></h4></a>
+                                    <a th:href="@{/bookDetail?id=}+${book.id}"><h4 th:text="${book.isbn}"></h4></a>
+
+                                    <a th:href="@{/bookDetail?id=}+${book.id}"><span style="font-size: x-large; color: #db3208;">$<span th:text="${#numbers.formatDecimal(book.ourPrice, 0, 'COMMA', 2, 'POINT')}"></span></span></a>
+                                    <span style="text-decoration: line-through;">$<span th:text="${#numbers.formatDecimal(book.listPrice, 0, 'COMMA', 2, 'POINT')}"></span></span>
+
+                                    <p th:utext="${#strings.abbreviate(book.description, 500)}"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</main>
+</body>
+</html>

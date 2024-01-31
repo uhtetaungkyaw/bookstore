@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html th:replace="~{layouts/main :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="jumbotron">
+        <div class="container mt-5">
+            <div class="col-md-12">
+                <table border="0">
+                    <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="order : ${orderList}">
+                        <td>
+                            <div th:if="${orderList != null}">
+                                <div class="row" style="margin-bottom: 50px;">
+                                    <div class="col-md-12">
+
+                                        <h4><strong>Order Book ID: </strong><span
+                                                th:text="${order.book.getName()}"></span>
+                                        </h4>
+                                        <h4><strong>Order Name: </strong><span th:text="${order.name}"></span></h4>
+                                        <h4><strong>Created Date: </strong><span th:text="${order.dateCreate}"></span>
+                                        </h4>
+                                        <h4><strong>Quantity : </strong><span th:text="${order.quantity}"></span></h4>
+                                        <hr/>
+                                        <h4><strong>Price: </strong><span th:text="${order.price}"></span></h4>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

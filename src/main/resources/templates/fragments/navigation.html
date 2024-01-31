@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html th:fragment="layout (content)" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns="http://www.w3.org/1999/html">
+<body>
+
+<nav th:fragment="navigation" class="navbar navbar-expand-md navbar-dark bg-dark text-white">
+    <a class="navbar-brand" href="#" th:href="@{/home}">The Waves</a>
+        <div class="navbar-nav mr-auto">
+            <a class="nav-link" href="#" th:href="@{/bookList}"><i class="fas fa-book"></i> BookList <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#" th:href="@{/cart}"><i class="fas fa-shopping-cart"></i> Cart</a>
+            <div sec:authorize="hasAuthority('ADMIN')">
+                <a class="nav-link" href="#" th:href="@{/bookEdit}"><i class="fas fa-pencil-alt"></i> Edit</a>
+            </div>
+            <div sec:authorize="hasAuthority('ADMIN')">
+                <a class="nav-link" href="#" th:href="@{/bookAdd}"><i class="fab fa-pushed"></i> Add</a>
+            </div>
+                <a class="nav-link" href="#" th:href="@{/orderList}"><i class="fas fa-stream"></i> Order</a>
+        </div>
+        <div class="navbar-nav">
+            <div class="d-flex justify-content-end">
+                <div sec:authorize="!isAuthenticated()" class="mt-2 mr-auto">
+                    <a href="#" th:href="@{/register}" class="mr-2 text-secondary"><i class="fas fa-user-plus"></i> Register</a>
+                    <a href="#" th:href="@{/login}" class="mr-2 text-secondary"><i class="fas fa-sign-in-alt"></i> Login</a>
+                </div>
+
+                <div sec:authorize="isAuthenticated()" class="mt-2 mr-auto">
+                    <a href="#" th:href="@{/account}" class="mr-2 text-secondary"><i class="fas fa-user-alt"></i> Account</a>
+                    <a href="javascript: document.logoutForm.submit()" class="mr-2 text-secondary"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
+                    <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+                        <input hidden type="submit" value="Sign Out"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+</nav>
+
+
+</body>
+</html>

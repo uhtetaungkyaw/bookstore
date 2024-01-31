@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html th:fragment="layout(content)" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,500,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+    <link rel="stylesheet" href="../../static/css/app.css" th:href="@{/css/app.css}">
+    <title>EBook</title>
+</head>
+<body>
+
+    <nav th:replace="~{fragments/navigation :: navigation}">
+    </nav>
+
+
+    <main th:replace="~{fragments/main :: main(${content})}">
+    </main>
+
+</body>
+</html>

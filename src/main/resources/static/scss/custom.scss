@@ -1,0 +1,30 @@
+
+body{
+  font-family: "Raleway",sans-serif;
+}
+
+#showcase{
+  min-height: 750px;
+  position: relative;
+
+  #header{
+    z-index: 2;
+  }
+  #overlay{
+      background: rgba(0,0,0,0.2);
+      position: absolute;
+      top:0;
+     left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+  h1{
+    font-family: "Questrial",sans-serif;
+    line-height: 1;
+  }
+}
+
+#footer{
+  font-weight: 100;
+}

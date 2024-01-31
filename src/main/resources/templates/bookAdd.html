@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html th:replace="~{layouts/main :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+    <main role="main">
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <form action="#" th:action="@{/book-add}" th:object="${book}" method="post">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                           <span>* Firstly Choose Image <a href="#" th:href="@{imageUpload}"> ImageUpload</a></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" th:field="*{name}" id="name" placeholder="Name"
+                                   th:classappend="${#fields.hasErrors('name')} ? 'is-invalid'"/>
+                            <div class="invalid-feedback" th:errors="*{name}"></div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="isbn">ISBN</label>
+                            <input type="text" class="form-control" th:field="*{isbn}" id="isbn" placeholder="isbn"
+                                   th:classappend="${#fields.hasErrors('isbn')} ? 'is-invalid'"/>
+                            <div class="invalid-feedback" th:errors="*{isbn}"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description">DESCRIPTION</label>
+                        <input type="text" class="form-control" th:field="*{description}" id="description" placeholder="description"
+                               th:classappend="${#fields.hasErrors('description')} ? 'is-invalid'"/>
+                        <div class="invalid-feedback" th:errors="*{description}"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="category">CATEGORY</label>
+                            <input type="text" class="form-control" th:field="*{category}" id="category" placeholder="category"
+                                   th:classappend="${#fields.hasErrors('category')} ? 'is-invalid'"/>
+                            <div class="invalid-feedback" th:errors="*{category}"></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                         <div class="col-md-6 mb-3">
+                            <label for="ourPrice">OUR PRICE</label>
+                            <input type="text" class="form-control" th:field="*{ourPrice}" id="ourPrice" placeholder="ourPrice"
+                                   th:classappend="${#fields.hasErrors('ourPrice')} ? 'is-invalid'"/>
+                            <div class="invalid-feedback" th:errors="*{ourPrice}"></div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="listPrice">LIST PRICE</label>
+                            <input type="text" class="form-control" th:field="*{listPrice}" id="listPrice" placeholder="listPrice"
+                                   th:classappend="${#fields.hasErrors('listPrice')} ? 'is-invalid'"/>
+                            <div class="invalid-feedback" th:errors="*{listPrice}"></div>
+                        </div>
+                    </div>
+
+
+
+                    <button type="submit" class="btn btn-primary">Add Book</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

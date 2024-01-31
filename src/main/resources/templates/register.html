@@ -1,0 +1,48 @@
+<!doctype html>
+<html th:replace="~{layouts/main :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<main role="main">
+
+    <div class="container mt-5">
+
+        <div class="row d-flex justify-content-center ">
+            <div class="col-md-4 py-4">
+                <h2><i class="fas fa-user-plus"></i> Registration</h2>
+                <hr/>
+                <form th:action="@{/saveUser}" th:object="${signupForm}" method="post">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" class="form-control" placeholder="" required=""
+                               th:field="*{username}" th:classappend="${#fields.hasErrors('username')} ? 'is-invalid'">
+                        <div class="invalid-feedback" th:errors="*{username}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control" placeholder=""
+                               required=""
+                               th:field="*{password}" th:classappend="${#fields.hasErrors('password')} ? 'is-invalid'">
+                        <div class="invalid-feedback" th:errors="*{password}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="passwordCheck">Repeat password</label>
+                        <input type="password" id="passwordCheck" name="password" class="form-control" placeholder=""
+                               required=""
+                               th:field="*{passwordCheck}"
+                               th:classappend="${#fields.hasErrors('passwordCheck')} ? 'is-invalid'">
+                        <div class="invalid-feedback" th:errors="*{passwordCheck}"></div>
+                    </div>
+
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+</body>
+</html>

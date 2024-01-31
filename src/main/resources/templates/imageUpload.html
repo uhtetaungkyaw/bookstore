@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html th:replace="~{layouts/main :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+  <main role="main">
+    <form th:action="@{/upload}" enctype="multipart/form-data" action="/" method="POST">
+        <div class="container mt-5">
+          <p>
+            <input id="fileInput" type="file" name="uploadFile">
+          </p>
+          <p>
+            <input type="submit" value="Upload file">
+          </p>
+        </div>
+    </form>
+  </main>
+</body>
+</html>

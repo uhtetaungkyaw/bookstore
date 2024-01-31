@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html th:replace="~{layouts/main :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+            <form th:action="@{/pay}" th:object="${payment}" method="post">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3><i class="fas fa-credit-card"></i> Use Credit Card</h3>
+                        </br>
+                        <hr/>
+
+                        <div class="form-group">
+                            <label for="cardHolder">* Card Holder Name:</label>
+                            <input type="text" class="form-control" id="cardHolder"
+                                   required="required" placeholder="Card Holder Name"
+                                   th:name="holderName" th:value="${payment.holderName}"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardNumber">* Card Number:</label>
+                            <div class="input-group">
+                                <input type="tel" class="form-control" id="cardNumber"
+                                       required="required" placeHolder="Valid Card Number"
+                                       th:name="cardNumber" th:value="${payment.cardNumber}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-7">
+                        <div class="form-group">
+                            <label>* Expiration Date</label>
+                            <div class="row">
+                                <div class="col-6">
+                                    <select class="form-control" name="expiryMonth"
+                                            required="required"
+                                            th:value="${payment.expiryMonth}">
+                                        <option disabled="disabled">-- Month --</option>
+                                        <option value="01">Jan (01)</option>
+                                        <option value="02">Feb (02)</option>
+                                        <option value="03">Mar (03)</option>
+                                        <option value="04">Apr (04)</option>
+                                        <option value="05">May (05)</option>
+                                        <option value="06">June (06)</option>
+                                        <option value="07">July (07)</option>
+                                        <option value="08">Aug (08)</option>
+                                        <option value="09">Sep (09)</option>
+                                        <option value="10">Oct (10)</option>
+                                        <option value="11">Nov (11)</option>
+                                        <option value="12">Dec (12)</option>
+                                    </select>
+                                </div>
+                                <div class="col-6">
+                                    <select class="form-control" name="expiryYear"
+                                            th:value="${payment.expiryYear}">
+                                        <option disabled="disabled">-- Year --</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                        <option value="19">2019</option>
+                                        <option value="20">2020</option>
+                                        <option value="21">2021</option>
+                                        <option value="22">2022</option>
+                                        <option value="23">2023</option>
+                                        <option value="23">2024</option>
+                                        <option value="23">2025</option>
+                                        <option value="23">2026</option>
+                                        <option value="23">2027</option>
+                                        <option value="23">2028</option>
+                                        <option value="23">2029</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="form-group">
+                            <label for="cardCVC">CV code</label>
+                            <input id="cardCVC" type="tel" class="form-control" name="cvc"
+                                   placeholder="CVC" th:name="cvc"
+                                   th:value="${payment.cvc}"/>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+        </div>
+    </div>
+    </div>
+</main>
+</body>
+</html>

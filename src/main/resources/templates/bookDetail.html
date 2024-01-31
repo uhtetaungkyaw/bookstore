@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html th:replace="~{layouts/main :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="container">
+
+    <form th:action="@{/cart-add/{id}(id=${book.id})}" th:object="${book}" method="post">
+
+    <div class="row" style="margin-top: 120px;">
+            <div class="col-3">
+               <img class="img-fluid" th:src="@{/images/book/}+${book.id}+'.png'"/>
+            </div>
+            <div class="col-9">
+                <h3 th:text="${book.name}">Book Title</h3>
+                <div class="row">
+                    <div class="col-5 mt-3">
+                        <h5><strong>Category: </strong><span th:text="${book.category}"></span> </h5>
+                        <p><strong>ISBN: </strong><span th:text="${book.isbn}"></span> </p>
+
+                        <a th:href="@{/bookList}" class="mt-5">Back to book list</a><br/>
+
+                    </div>
+
+                    <div class="col-7">
+                        <div class="card" style="border-width: 5px; margin-top: 20px;">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h4>Our Price: <span style="color: #db3208;">$<span th:text="${book.ourPrice}"></span></span></h4>
+                                        <p>List Price: <span style="text-decoration: Line-through">$<span th:text="${book.listPrice}"></span></span></p>
+                                        <p>You save: $<span th:text="${#numbers.formatDecimal((book.listPrice - book.ourPrice), 0, 'COMMA', 2, 'POINT')}"></span></p>
+                                    </div>
+                                    <div class="col-6">
+                                       <button type="submit" class="btn btn-warning" style="color: black; border: 1px solid black; padding: 10px 40px 10px 40px;">Add to Cart</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr/>
+                <p th:utext="${book.description}"></p>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+</main>
+</body>
+</html>

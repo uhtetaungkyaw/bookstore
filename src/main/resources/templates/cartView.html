@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html th:replace="~{layouts/main :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-11">
+                    <form th:action="@{/checkout}"  method="post">
+                        <div>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th> ID</th>
+                                    <th> Name</th>
+                                    <th> Price $</th>
+                                    <th> Quantity</th>
+                                    <th> SubTotal</th>
+                                    <th> OPTION</th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr th:each="item: ${session.cart}">
+                                    <td th:text="${item.book.id}"></td>
+                                    <td th:text="${item.book.name}"></td>
+                                    <td th:text="${item.book.ourPrice}"></td>
+                                    <td th:text="${item.quantity}"></td>
+                                    <td th:text="${item.book.ourPrice*item.quantity}"></td>
+                                    <td>
+                                        <a th:href="@{/cartRemove/{id}(id=${item.book.id})}"><i class="far fa-trash-alt"> Remove</i></a>
+                                    </td>
+                                </tr>
+                                    <td colspan="3">Total</td>
+                                    <td></td>
+                                    <td th:text="${totalCost}"></td>
+                                </tbody>
+
+
+                            </table>
+                            <button type="submit" class="btn btn-primary">checkout</button>
+
+
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-1">
+                    <a href="#" th:href="@{/bookList}" class="btn btn-primary mt-2 mr-5">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

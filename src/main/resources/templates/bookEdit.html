@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html th:replace="~{layouts/main :: layout(~{::main})}" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+  <main role="main">
+      <div class="container">
+
+          <div class="col-md-12" th:if="${not #lists.isEmpty(books)}">
+              <table class="table table-striped" >
+                  <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>ISBN</th>
+                      <th>Description</th>
+                      <th>Category</th>
+                      <th>OurPrice</th>
+                      <th>ListPrice</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr th:each="book : ${books}">
+                      <td th:text="${book.id}"></td>
+                      <td th:text="${book.name}"></td>
+                      <td th:text="${book.isbn}"></td>
+                      <td th:text="${book.description}"></td>
+                      <td th:text="${book.category}"></td>
+                      <td th:text="${book.ourPrice}"></td>
+                      <td th:text="${book.listPrice}"></td>
+                      <td><a th:href="@{/bookEdit/{id}(id=${book.id})}">Edit</a></td>
+                      <td><a th:href="@{/bookDelete/{id}(id=${book.id})}">Delete</a></td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+
+      </div>
+  </main>
+</body>
+</html>
